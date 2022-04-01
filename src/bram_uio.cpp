@@ -24,6 +24,6 @@ BRAM::BRAM(unsigned int uio_number, unsigned int size) {
     }
 }
 
-uint32_t& BRAM::operator[](int index) {
+uint32_t& BRAM::operator[](unsigned int index) {
     return bram_ptr[index];
 }
