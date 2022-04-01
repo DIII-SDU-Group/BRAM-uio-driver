@@ -12,7 +12,7 @@ BRAM::BRAM(unsigned int uio_number, unsigned int size) {
     if ((device_file = open(device_file_name, O_RDWR | O_SYNC)) < 0) {
         std::stringstream ss;
         ss << device_file_name << " could not be opened";
-        throw std::to_string(ss);
+        throw ss.str();
     }
 
     bram_ptr = (uint32_t *)mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, device_file, 0x0);
@@ -20,7 +20,7 @@ BRAM::BRAM(unsigned int uio_number, unsigned int size) {
     if (bram_ptr == NULL) {
         std::stringstream ss;
         ss << "Could not map memory";
-        throw std::to_string(ss);
+        throw ss.str();
     }
 }
 
