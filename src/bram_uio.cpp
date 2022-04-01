@@ -23,3 +23,7 @@ BRAM::BRAM(unsigned int uio_number, unsigned int size) {
         throw std::to_string(ss);
     }
 }
+
+uint32_t& BRAM::operator[](int index) {
+    return bram_ptr[index];
+}
