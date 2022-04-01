@@ -4,7 +4,7 @@
 /************************** Function Implementation *************************/
 
 BRAM::BRAM(unsigned int uio_number, unsigned int size) {
-    char *device_file_name[20];
+    char device_file_name[20];
     sprintf(device_file_name, "/dev/uio%d", uio_number);
 
     int device_file;
