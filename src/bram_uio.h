@@ -50,8 +50,8 @@ public:
     }
 
 
-    T& operator[](unsigned int) {
-        return (T&)(bram_ptr[index]);
+    T& operator()(unsigned int) {
+        return bram_ptr[index];
     }
 
 private:
