@@ -24,7 +24,6 @@
 #include <sstream>
 
 /******************************** Class ***********************************/
-template <class T = uint32_t>
 class BRAM {
 
 public:
@@ -50,9 +49,9 @@ public:
     }
 
 
-    T& operator()(unsigned int) {
+    uint32_t& operator()(unsigned int) {
 
-        return ((T *)bram_ptr)[index];
+        return bram_ptr[index];
     }
 
 private:
