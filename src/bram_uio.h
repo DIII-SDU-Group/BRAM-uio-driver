@@ -24,12 +24,13 @@
 #include <sstream>
 
 /******************************** Class ***********************************/
+template <typename T = uint32_t>
 class BRAM {
 
 public:
     BRAM(unsigned int uio_number, unsigned int size);
 
-    uint32_t& operator[](unsigned int);
+    T& operator[](unsigned int);
 
 private:
     uint32_t *bram_ptr;
