@@ -28,9 +28,31 @@ template <class T = uint32_t>
 class BRAM {
 
 public:
-    BRAM(unsigned int uio_number, unsigned int size);
+    BRAM(unsigned int uio_number, unsigned int size) {
+        char device_file_name[20];
+        sprintf(device_file_name, "/dev/uio%d", uio_number);
 
-    T& operator[](unsigned int);
+        int device_file;
+
+        if ((device_file = open(device_file_name, O_RDWR | O_SYNC)) < 0) {
+            std::stringstream ss;
+            ss << device_file_name << " could not be opened";
+            throw ss.str();
+        }
+
+        bram_ptr = (uint32_t *)mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, device_file, 0x0);
+
+        if (bram_ptr == NULL) {
+            std::stringstream ss;
+            ss << "Could not map memory";
+            throw ss.str();
+        }
+    }
+
+
+    T& operator[](unsigned int) {
+        return ((T *)bram_ptr)[index];
+    }
 
 private:
     uint32_t *bram_ptr;
