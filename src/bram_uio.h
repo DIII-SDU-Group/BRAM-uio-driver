@@ -49,7 +49,7 @@ public:
     }
 
 
-    uint32_t& operator()(unsigned int) {
+    uint32_t& operator[](unsigned int) {
 
         return bram_ptr[index];
     }
