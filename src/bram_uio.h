@@ -51,7 +51,7 @@ public:
 
 
     T& operator[](unsigned int) {
-        return bram_ptr[index];
+        return (T&)(bram_ptr[index]);
     }
 
 private:
