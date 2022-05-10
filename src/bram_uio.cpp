@@ -3,8 +3,7 @@
 
 /************************** Function Implementation *************************/
 
-template <class T>
-BRAM<T>::BRAM(unsigned int uio_number, unsigned int size) {
+BRAM::BRAM(unsigned int uio_number, unsigned int size) {
     char device_file_name[20];
     sprintf(device_file_name, "/dev/uio%d", uio_number);
 
@@ -25,7 +24,10 @@ BRAM<T>::BRAM(unsigned int uio_number, unsigned int size) {
     }
 }
 
-template <class T>
-T& BRAM<T>::operator[](unsigned int index) {
-    return ((T *)bram_ptr)[index];
+uint32_t& BRAM::operator[](unsigned int index) {
+    return bram_ptr[index];
+}
+
+uint32_t *BRAM::GetPointer() {
+    return bram_ptr;
 }
