@@ -24,7 +24,7 @@
 #include <sstream>
 
 /******************************** Class ***********************************/
-template <typename T = uint32_t>
+template <class T = uint32_t>
 class BRAM {
 
 public:
