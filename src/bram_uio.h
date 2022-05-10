@@ -40,7 +40,7 @@ public:
             throw ss.str();
         }
 
-        bram_ptr = (uint32_t *)mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, device_file, 0x0);
+        bram_ptr = (T *)mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, device_file, 0x0);
 
         if (bram_ptr == NULL) {
             std::stringstream ss;
@@ -51,10 +51,10 @@ public:
 
 
     T& operator[](unsigned int) {
-        return (T)(((T *)bram_ptr)[index]);
+        return bram_ptr[index];
     }
 
 private:
-    uint32_t *bram_ptr;
+    T *bram_ptr;
 
 };
