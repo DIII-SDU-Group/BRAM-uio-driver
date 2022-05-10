@@ -54,6 +54,10 @@ public:
         return bram_ptr[index];
     }
 
+    uint32_t *GetPointer() {
+        return bram_ptr;
+    }
+
 private:
     uint32_t *bram_ptr;
 
